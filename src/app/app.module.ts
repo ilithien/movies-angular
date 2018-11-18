@@ -8,13 +8,16 @@ import { MoviesGridComponent } from './containers/movies-grid/movies-grid.compon
 import { StoreModule } from '@ngrx/store';
 import { FormsModule } from '@angular/forms';
 import { reducers } from './store/reducers';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MoviesSearcherComponent } from './containers/movies-searcher/movies-searcher.component';
 import { EffectsModule } from '@ngrx/effects';
 import { MoviesEffects } from './store/effects/movies';
 import { LoaderComponent } from './components/loader/loader.component';
 import { MovieCardComponent } from './components/movie-card/movie-card.component';
 import { MovieDetailComponent } from './containers/movie-detail/movie-detail.component';
+import { LoginInterceptor } from './interceptors/login.interceptor';
+import { LoginService } from './services/login.service';
+import { LoginFormComponent } from './containers/login-form/login-form.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +27,8 @@ import { MovieDetailComponent } from './containers/movie-detail/movie-detail.com
     MoviesSearcherComponent,
     LoaderComponent,
     MovieCardComponent,
-    MovieDetailComponent
+    MovieDetailComponent,
+    LoginFormComponent
   ],
   imports: [
     HttpClientModule,
@@ -34,7 +38,7 @@ import { MovieDetailComponent } from './containers/movie-detail/movie-detail.com
     EffectsModule.forRoot([MoviesEffects]),
     StoreModule.forRoot(reducers)
   ],
-  providers: [MovieService],
+  providers: [MovieService, LoginService, { provide: HTTP_INTERCEPTORS, useClass: LoginInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,7 @@
+<form class="form-inline my-2 my-lg-0" *ngIf="!logged">
+  <input type="text" class="form-control mr-sm-2" placeholder="Username" [(ngModel)]="username" [ngModelOptions]="{standalone: true}" />
+  <input type="password" class="form-control mr-sm-2" placeholder="Password" [(ngModel)]="password" [ngModelOptions]="{standalone: true}" />
+  <button class="btn btn-primary btn-outline-primary" (click)="login()">Log-in</button>
+</form>
+
+<div *ngIf="logged">You're logged as {{ username }}</div>

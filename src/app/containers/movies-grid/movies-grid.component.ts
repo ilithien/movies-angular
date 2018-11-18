@@ -10,14 +10,14 @@ import { Observable } from 'rxjs';
 })
 export class MoviesGridComponent implements OnInit {
 
-  movies: Observable<Movie[]>
-  loading: Observable<boolean>
+  movies$: Observable<Movie[]>
+  loading$: Observable<boolean>
 
   constructor(private movieService: MovieService) { }
 
   ngOnInit() {
-    this.loading = this.movieService.isLoading();
-    this.movies = this.movieService.loadMovies();
+    this.loading$ = this.movieService.isLoading();
+    this.movies$ = this.movieService.loadMovies();
   }
 
 }

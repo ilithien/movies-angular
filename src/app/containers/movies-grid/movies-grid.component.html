@@ -1,10 +1,11 @@
-<div *ngIf="loading | async" class="text-center">
+<mov-movies-searcher class="ml-auto"></mov-movies-searcher>
+<div *ngIf="loading$ | async" class="text-center">
   <mov-loader></mov-loader>
 </div>
 <div class="container">
   <div class="section">
-    <div *ngIf="!(loading | async)" class="movies-grid row row-eq-height">
-      <mov-movie-card *ngFor="let movie of (movies | async)" [movie]="movie" class="col-lg-4 movie-card"></mov-movie-card>
+    <div *ngIf="!(loading$ | async)" class="movies-grid row row-eq-height">
+      <mov-movie-card *ngFor="let movie of (movies$ | async)" [movie]="movie" class="col-lg-4 movie-card"></mov-movie-card>
     </div>
   </div>
 </div>

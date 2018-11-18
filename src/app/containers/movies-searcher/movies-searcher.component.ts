@@ -3,8 +3,7 @@ import { MovieService } from '../../services/movie.service.';
 
 @Component({
   selector: 'mov-movies-searcher',
-  templateUrl: './movies-searcher.component.html',
-  styleUrls: ['./movies-searcher.component.sass']
+  templateUrl: './movies-searcher.component.html'
 })
 export class MoviesSearcherComponent {
 
