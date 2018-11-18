@@ -1,0 +1,22 @@
+<div *ngIf="loading$ | async" class="text-center">
+  <mov-loader></mov-loader>
+</div>
+<div *ngIf="!(loading$ | async)" class="container">
+  <a routerLink="/" class="btn btn-primary">Go back</a>
+  <div *ngIf="(movie$ | async) as movie" class="row">
+    <div class="col-lg-4 col-md-6 poster">
+      <img [src]="movie?.Poster" [alt]="movie?.Title" />
+    </div>
+    <div class="col-lg-8 col-md-6 info">
+      <h1>{{ movie?.Title }}</h1>
+      <h2>{{ movie?.Genre }}</h2>
+      <h3>{{ movie?.Year }}</h3>
+      <h4>Directed by: {{ movie?.Director }}</h4>
+      <h4>Written by: {{ movie?.Writer }}</h4>
+      <h5>Duration: {{ movie?.Runtime }}</h5>
+      <h5>Released: {{ movie?.Released }}</h5>
+      <h5>Languages: {{ movie?.Language }}</h5>
+      <p>{{ movie?.Plot }}</p>
+    </div>
+  </div>
+</div>

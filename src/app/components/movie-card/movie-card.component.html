@@ -1,0 +1,11 @@
+<div class="poster row">
+  <div class="col-lg-12 text-center">
+    <a [routerLink]="['/', movie.imdbID]"><img [src]="movie.Poster"></a>
+  </div>
+  <div class="detail col-lg-12 text-center">
+    <div class="row">
+      <span class="movie-title col-md-12">{{ movie.Title }}</span>
+      <span class="movie-year col-md-12">{{ movie.Year }}</span>
+    </div>
+  </div>
+</div>
