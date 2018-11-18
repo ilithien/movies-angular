@@ -13,13 +13,27 @@ export class MovieDetailComponent implements OnInit {
 
   movie$: Observable<Movie>;
   loading$: Observable<boolean>
+  isFav: boolean
 
   constructor(private route: ActivatedRoute, private movieService: MovieService) { }
 
   ngOnInit() {
+    const movieID = this.route.snapshot.params.movie;
+
+    this.isFav = !!localStorage.getItem(movieID);
     this.movie$ = this.movieService.loadMovie();
     this.loading$ = this.movieService.isDetailLoading();
-    this.movieService.searchMovieById(this.route.snapshot.params.movie);
+    this.movieService.searchMovieById(movieID);
+  }
+
+  addToFavorites(movie: Movie): void {
+    localStorage.setItem(movie.imdbID, JSON.stringify(movie));
+    this.isFav = true;
+  }
+
+  removeFromFavorites(movieID: string): void {
+    localStorage.removeItem(movieID);
+    this.isFav = false;
   }
 
 }
