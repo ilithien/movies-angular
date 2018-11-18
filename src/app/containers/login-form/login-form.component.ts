@@ -30,7 +30,8 @@ export class LoginFormComponent implements OnInit {
   }
 
   logout() {
-    sessionStorage.removeItem("session")
+    sessionStorage.removeItem("SESSION-TOKEN")
+    sessionStorage.removeItem("USER")
     this.logged = false;
   }
 
